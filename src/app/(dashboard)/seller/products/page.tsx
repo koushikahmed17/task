@@ -8,7 +8,7 @@ import {
   FiEdit,
   FiTrash2,
 } from "react-icons/fi";
-import DeleteProductModal from "../../Model/DeleteProductModal"; // ✅ Make sure this path is correct
+import DeleteProductModal from "../../../../Model/DeleteProductModal"; // ✅ Make sure this path is correct
 
 interface Product {
   name: string;

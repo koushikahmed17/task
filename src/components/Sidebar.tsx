@@ -17,13 +17,24 @@ interface MenuItem {
   path: string;
 }
 
-const menuItems: MenuItem[] = [
-  { label: "Overview", icon: <FiHome />, path: "/Overview" },
-  { label: "Products", icon: <FiBox />, path: "/Product" },
-  { label: "Orders", icon: <FiShoppingCart />, path: "/order" },
-  { label: "Payments", icon: <FiCreditCard />, path: "/customer/dashboard" },
-  { label: "Settings", icon: <FiSettings />, path: "/customer/order" },
-];
+const role = 'customer';
+
+const menuItems: { seller: MenuItem[]; customer: MenuItem[] } = {
+  seller: [
+    { label: "Overview", icon: <FiHome />, path: "/seller/Overview" },
+    { label: "Products", icon: <FiBox />, path: "/seller/products" },
+    { label: "Orders", icon: <FiShoppingCart />, path: "/seller/orders" },
+    { label: "Payments", icon: <FiCreditCard />, path: "/seller/payments" },
+    { label: "Settings", icon: <FiSettings />, path: "/seller/settings" },
+  ],
+  customer: [
+    { label: "Overview", icon: <FiHome />, path: "/customer/Overview" },
+    { label: "Products", icon: <FiBox />, path: "/customer/Product" },
+    { label: "Orders", icon: <FiShoppingCart />, path: "/customer/order" },
+    { label: "Payments", icon: <FiCreditCard />, path: "/customer/customer/dashboard" },
+    { label: "Settings", icon: <FiSettings />, path: "/customer/settings" },
+  ]
+};
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -31,7 +42,7 @@ const Sidebar = () => {
   return (
     <div className="w-64 bg-white p-4">
       <div className="space-y-2">
-        {menuItems.map((item) => {
+        {menuItems[role].map((item) => {
           const isActive = pathname === item.path;
 
           return (
