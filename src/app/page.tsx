@@ -1,8 +1,7 @@
-import Dashboard from "../components/Dashboard";
 export default function Home() {
   return (
-    <>
-      <Dashboard />
-    </>
+    <div>
+      <h1>Welcome to my website</h1>
+    </div>
   );
 }

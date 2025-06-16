@@ -2,7 +2,44 @@
 import React from "react";
 import { BsDot } from "react-icons/bs";
 
-const Dashboard = () => {
+interface SalesData {
+  title: string;
+  amount: string;
+  change: string;
+}
+
+interface OrderStatus {
+  label: string;
+  value: number;
+  color: string;
+}
+
+const Dashboard: React.FC = () => {
+  const salesData: SalesData[] = [
+    {
+      title: "Sales Today",
+      amount: "$2,450",
+      change: "+15% from last period",
+    },
+    {
+      title: "Sales This Week",
+      amount: "$10,230",
+      change: "+8% from last period",
+    },
+    {
+      title: "Sales This Month",
+      amount: "$45,670",
+      change: "+12% from last period",
+    },
+  ];
+
+  const orderStatuses: OrderStatus[] = [
+    { label: "Pending", value: 12, color: "text-orange-500" },
+    { label: "Shipped", value: 24, color: "text-blue-600" },
+    { label: "Delivered", value: 156, color: "text-green-600" },
+    { label: "Cancelled", value: 3, color: "text-red-500" },
+  ];
+
   return (
     <div className="p-6 space-y-6 bg-[#F9FAFB] min-h-screen font-poppins">
       {/* Welcome Message */}
@@ -18,23 +55,7 @@ const Dashboard = () => {
 
       {/* Sales Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {[
-          {
-            title: "Sales Today",
-            amount: "$2,450",
-            change: "+15% from last period",
-          },
-          {
-            title: "Sales This Week",
-            amount: "$10,230",
-            change: "+8% from last period",
-          },
-          {
-            title: "Sales This Month",
-            amount: "$45,670",
-            change: "+12% from last period",
-          },
-        ].map((item, idx) => (
+        {salesData.map((item, idx) => (
           <div
             key={idx}
             className="w-full h-[126px] rounded-[8px] p-[25px] border bg-white shadow-sm"
@@ -56,12 +77,7 @@ const Dashboard = () => {
       <div className="bg-white border border-gray-300 rounded-[8px] p-4 shadow-sm">
         <p className="text-[20px] font-semibold mb-4">Orders Status</p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-          {[
-            { label: "Pending", value: 12, color: "text-orange-500" },
-            { label: "Shipped", value: 24, color: "text-blue-600" },
-            { label: "Delivered", value: 156, color: "text-green-600" },
-            { label: "Cancelled", value: 3, color: "text-red-500" },
-          ].map((status, idx) => (
+          {orderStatuses.map((status, idx) => (
             <div
               key={idx}
               className="border border-gray-300 rounded-[8px] p-[10px] flex items-center space-x-2"

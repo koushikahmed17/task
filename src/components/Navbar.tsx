@@ -7,19 +7,20 @@ import { MdLanguage } from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
 
 const Navbar = () => {
-  const [languageOpen, setLanguageOpen] = useState(false);
-  const [profileOpen, setProfileOpen] = useState(false);
+  const [languageOpen, setLanguageOpen] = useState<boolean>(false);
+  const [profileOpen, setProfileOpen] = useState<boolean>(false);
 
-  const languageRef = useRef(null);
-  const profileRef = useRef(null);
+  const languageRef = useRef<HTMLDivElement>(null);
+  const profileRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown when clicked outside
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (languageRef.current && !languageRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node;
+
+      if (languageRef.current && !languageRef.current.contains(target)) {
         setLanguageOpen(false);
       }
-      if (profileRef.current && !profileRef.current.contains(event.target)) {
+      if (profileRef.current && !profileRef.current.contains(target)) {
         setProfileOpen(false);
       }
     };
@@ -30,14 +31,11 @@ const Navbar = () => {
 
   return (
     <nav className="w-full border-b bg-white font-['Poppins']">
-      {/* Top bar */}
       <div className="max-w-screen-xl mx-auto px-4 py-3 flex justify-between items-center">
-        {/* Logo */}
         <div className="text-[#BF2879] font-bold text-[32px] leading-[22px]">
           Logo
         </div>
 
-        {/* Right section */}
         <div className="flex items-center gap-5 text-sm text-[#7D8184] h-10">
           {/* Language Dropdown */}
           <div className="relative" ref={languageRef}>
@@ -103,16 +101,13 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Search Bar */}
       <div className="border-t">
-        <div className="max-w-screen-xl mx-auto px-4 py-3 flex items-center gap-4 h-[52px]">
-          {/* Categories */}
+        <div className="max-w-screen-xl mx-auto px-4 py-3 flex items-center gap-4 h-[92px]">
           <button className="border border-gray-300 px-4 py-2 rounded text-sm flex items-center gap-2 bg-white text-[#7D8184]">
             <span className="text-[16px] leading-[22px]">Categories</span>
             <FaChevronDown className="w-3 h-[6px]" />
           </button>
 
-          {/* Search Input */}
           <div className="flex-grow relative">
             <input
               type="text"
@@ -122,7 +117,6 @@ const Navbar = () => {
             <FiSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
           </div>
 
-          {/* Search Button */}
           <button className="bg-[#DB4444] text-white px-4 py-2 rounded text-[18px] font-medium leading-[22px] hover:bg-[#c53030] transition">
             Search
           </button>

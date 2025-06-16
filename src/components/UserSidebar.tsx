@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { usePathname } from "next/navigation";
 import {
   FiHome,
@@ -10,20 +9,27 @@ import {
   FiSettings,
 } from "react-icons/fi";
 import Link from "next/link";
+import { ReactElement } from "react";
 
-const menuItems = [
-  { label: "Overview", icon: <FiHome />, path: "/" },
-  { label: "Products", icon: <FiBox />, path: "/Product" },
-  { label: "Orders", icon: <FiShoppingCart />, path: "/dashboard/orders" },
-  { label: "Payments", icon: <FiCreditCard />, path: "/dashboard/payments" },
-  { label: "Settings", icon: <FiSettings />, path: "/dashboard/settings" },
+interface MenuItem {
+  label: string;
+  icon: ReactElement;
+  path: string;
+}
+
+const menuItems: MenuItem[] = [
+  { label: "Overview", icon: <FiHome />, path: "/Overview" },
+  { label: "Profile", icon: <FiBox />, path: "/Product" },
+  { label: "Orders", icon: <FiShoppingCart />, path: "/order" },
+  { label: "Payments", icon: <FiCreditCard />, path: "/customer/dashboard" },
+  { label: "Settings", icon: <FiSettings />, path: "/customer/order" },
 ];
 
 const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <div className="w-64  bg-white p-4">
+    <div className="w-64 bg-white p-4">
       <div className="space-y-2">
         {menuItems.map((item) => {
           const isActive = pathname === item.path;
