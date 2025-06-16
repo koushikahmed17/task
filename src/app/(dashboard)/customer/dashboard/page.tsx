@@ -1,10 +1,10 @@
 // app/page.tsx
 import React from "react";
-import { StatCard, StatCardProps } from "../../../components/StatCard";
+import { StatCard, StatCardProps } from "../../../../components/StatCard";
 import {
   ActivityItem,
   ActivityItemProps,
-} from "../../../components/ActivityItem";
+} from "../../../../components/ActivityItem";
 import {
   FiPackage,
   FiHeart,

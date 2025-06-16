@@ -17,7 +17,7 @@ interface MenuItem {
   path: string;
 }
 
-const role = 'customer';
+const role = "customer";
 
 const menuItems: { seller: MenuItem[]; customer: MenuItem[] } = {
   seller: [
@@ -28,12 +28,17 @@ const menuItems: { seller: MenuItem[]; customer: MenuItem[] } = {
     { label: "Settings", icon: <FiSettings />, path: "/seller/settings" },
   ],
   customer: [
-    { label: "Overview", icon: <FiHome />, path: "/customer/Overview" },
-    { label: "Products", icon: <FiBox />, path: "/customer/Product" },
-    { label: "Orders", icon: <FiShoppingCart />, path: "/customer/order" },
-    { label: "Payments", icon: <FiCreditCard />, path: "/customer/customer/dashboard" },
+    { label: "Overview", icon: <FiHome />, path: "/customer/dashboard" },
+    { label: "My Orders", icon: <FiBox />, path: "/customer/order" },
+    { label: "WishList", icon: <FiShoppingCart />, path: "/customer/wishlist" },
+    {
+      label: "Profile",
+      icon: <FiCreditCard />,
+      path: "/customer/profile",
+    },
+    { label: "Support", icon: <FiSettings />, path: "/customer/settings" },
     { label: "Settings", icon: <FiSettings />, path: "/customer/settings" },
-  ]
+  ],
 };
 
 const Sidebar = () => {
