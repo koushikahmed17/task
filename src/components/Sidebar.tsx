@@ -17,7 +17,7 @@ interface MenuItem {
   path: string;
 }
 
-const role = "customer";
+const role = "seller";
 
 const menuItems: { seller: MenuItem[]; customer: MenuItem[] } = {
   seller: [
