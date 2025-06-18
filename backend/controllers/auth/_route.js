@@ -1,9 +1,11 @@
 const express=require('express');
 const { login } = require('.');
+const { register } = require('.');
 const router=express.Router();
 
 
 router.post('/login',login)
+router.post('/register',register)
 
 
 

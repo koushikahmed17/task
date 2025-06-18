@@ -8,6 +8,8 @@ const { ConnectDB } = require('./config/db')
 const path = require('path')
 dotevn.config()
 app.use(express.json())
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
 app.use(cors(
     {
         origin:"*"
