@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 
 import "./globals.css";
+import { GlobalProvider } from "@/components/Contex";
+import PrivateRoute from "@/components/PrivateRoute";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,22 +29,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <div className="flex flex-col min-h-screen">
-          {/* Top Navbar */}
-          <Navbar />
-
-          {/* Main content with Sidebar and Dashboard */}
-          <div className="flex flex-1">
-            {/* Sidebar */}
-            <Sidebar />
-
-            {/* Page Content */}
-            <main className="flex-1 p-4 bg-[#F9FAFB]">{children}</main>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <GlobalProvider>
+          <PrivateRoute>
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <div className="flex flex-1">
+              <Sidebar />
+              <main className="flex-1 p-4 bg-[#F9FAFB]">{children}</main>
+            </div>
           </div>
-        </div>
+          </PrivateRoute>
+        </GlobalProvider>
       </body>
     </html>
   );

@@ -1,10 +1,16 @@
 // app/login/page.tsx
 "use client";
 
+import GlobalContext from "@/components/Contex";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
 
 const LoginPage = () => {
   const router = useRouter();
+
+  const {user}=useContext(GlobalContext)
+
+  console.log(user,'this is the user for ');
 
   const handleLogin = (role: string) => {
     localStorage.setItem("userRole", role);
